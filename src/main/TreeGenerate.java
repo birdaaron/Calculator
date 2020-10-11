@@ -19,7 +19,21 @@ public class TreeGenerate
             subExpressionBuilder.append(expressionArray[j]).append(" ");
         return subExpressionBuilder.toString();
     }
-
+    protected boolean isSignPrior(String signA,String signB)
+    {
+        switch (signA)
+        {
+            case "+":
+            case "-":
+                if(signB.equals("×")||signB.equals("÷"))
+                    return false;
+                return true;
+            case "×":
+            case "÷":
+                return true;
+        }
+        return false;
+    }
     protected void pushExpressionIntoStack(Deque<Node> signStack,Deque<Node> numStack,String expression)
     {
         String[] expressionArray = expression.split(" ");//
@@ -32,20 +46,17 @@ public class TreeGenerate
                     String subExpression = getExpressionInBracket(expressionArray, i,rightBracketIndex);
                     numStack.push(transExpressionIntoTree(subExpression));
                     i = rightBracketIndex;
-
                     break;
                 case "+":
                 case "-":
-                    if(!signStack.isEmpty())
-                    {
-                        String lastestSign = signStack.getFirst().content;
-                        Node node = null;
-                        if(lastestSign.equals("×")||lastestSign.equals("÷"))
-                            node = createTree(signStack,numStack);
-                        numStack.push(node);
-                    }
                 case "×":
                 case "÷":
+                    if(!signStack.isEmpty())
+                    {
+                        String lastSign = signStack.getFirst().content;
+                        if(isSignPrior(lastSign,expressionArray[i]))
+                            numStack.push(createTree(signStack,numStack));
+                    }
                     signStack.push(new Node(null,expressionArray[i],null,false));
                     break;
                 default:

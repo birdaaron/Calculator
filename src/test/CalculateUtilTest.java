@@ -11,11 +11,11 @@ class CalculateUtilTest
         String result1 = CalculateUtil.calNaturalNum("10","+","5");
         String result2 = CalculateUtil.calNaturalNum("10","-","5");
         String result3 = CalculateUtil.calNaturalNum("10","×","5");
-        String result4 = CalculateUtil.calNaturalNum("10","÷","5");
+        String result4 = CalculateUtil.calNaturalNum("5","÷","10");
         assertEquals("15",result1);
         assertEquals("5",result2);
         assertEquals("50",result3);
-        assertEquals("2",result4);
+        assertEquals("1/2",result4);
     }
     @Test
     public void testCalFraction()
@@ -43,10 +43,5 @@ class CalculateUtilTest
         String b = "1/10";
         String sign = "-";
         assertEquals("99/10",CalculateUtil.calNum(a,sign,b));
-    }
-    @Test
-    public void isLarger(String num1,String num2)
-    {
-
     }
 }

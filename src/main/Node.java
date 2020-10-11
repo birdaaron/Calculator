@@ -29,6 +29,12 @@ public class Node
         oit.operate(root);
         inOrder(root.right,oit);
     }
+    public static void switchLeftAndRight(Node root)
+    {
+        Node temp = root.left;
+        root.left = root.right;
+        root.right = temp;
+    }
     public interface OperationInTraversal
     {
         void operate(Node node);

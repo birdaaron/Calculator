@@ -22,7 +22,7 @@ public class CalculateUtil
             case "×":
                 return String.valueOf(num1*num2);
             case "÷":
-                return String.valueOf(num1/num2);
+                return divideFraction(num1Str+"/1",num2Str+"/1");
         }
         return null;
     }
@@ -62,6 +62,12 @@ public class CalculateUtil
                 + getNumerator(fractionStr2)*getDenominator(fractionStr1);
         int d = getDenominator(fractionStr1)*getDenominator(fractionStr2);
         int gcd = getGCD(n,d);
+        if(n==0)
+            return "0";
+        else if(n/gcd==d/gcd)
+            return "1";
+        else if(d/gcd==1)
+            return String.valueOf(n/gcd);
         return (n / gcd) +"/"+(d/gcd);
     }
     private static String minusFraction(String fractionStr1,String fractionStr2)
@@ -72,6 +78,12 @@ public class CalculateUtil
         int gcd = getGCD(n,d);
         if(gcd<0)
             gcd = -1*gcd;
+        if(n==0)
+            return "0";
+        else if(n/gcd==d/gcd)
+            return "1";
+        else if(d/gcd==1)
+            return String.valueOf(n/gcd);
         return (n / gcd) +"/"+(d/gcd);
     }
     private static String timeFraction(String fractionStr1,String fractionStr2)
@@ -79,6 +91,12 @@ public class CalculateUtil
         int n = getNumerator(fractionStr1)*getNumerator(fractionStr2);
         int d = getDenominator(fractionStr1)*getDenominator(fractionStr2);
         int gcd = getGCD(n,d);
+        if(n==0)
+            return "0";
+        else if(n/gcd==d/gcd)
+            return "1";
+        else if(d/gcd==1)
+            return String.valueOf(n/gcd);
         return (n / gcd) +"/"+(d/gcd);
     }
     private static String divideFraction(String fractionStr1,String fractionStr2)
@@ -86,6 +104,12 @@ public class CalculateUtil
         int n = getNumerator(fractionStr1)*getDenominator(fractionStr2);
         int d = getDenominator(fractionStr1)*getNumerator(fractionStr2);
         int gcd = getGCD(n,d);
+        if(n==0)
+            return "0";
+        else if(n/gcd==d/gcd)
+            return "1";
+        else if(d/gcd==1)
+            return String.valueOf(n/gcd);
         return (n / gcd) +"/"+(d/gcd);
     }
 }

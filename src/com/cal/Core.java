@@ -1,5 +1,6 @@
 package com.cal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -74,6 +75,7 @@ public class Core
         List<String> strList = new ArrayList<>();
         List<Node> nodeList = new ArrayList<>();
         List<Node> resultList = new ArrayList<>();
+        HashMap<String,Node> map = new HashMap<>();
         int sameExpressionCount = 0;
         for(int i = 0;i<expressionNum;i++)
             strList.add(expressionGenerate.createExpression(new Random().nextInt(3)+1));
@@ -81,17 +83,17 @@ public class Core
             nodeList.add(treeGenerate.transExpressionIntoTree(str));
         for(Node node : nodeList)
         {
-            boolean addFlag = true;
             calResult(node);
             adjustExpressionTree(node);
-            for(Node resultNode : resultList)
-                if(resultNode.result.equals(node.result)&&isExpressionDuplicated(resultNode,node))
-                {
-                    addFlag = false;
-                    sameExpressionCount++;
-                }
-            if(addFlag)
+
+            if(map.containsKey(node.result)&&isExpressionDuplicated(map.get(node.result),node))
+                sameExpressionCount++;
+            else
+            {
+                map.put(node.result,node);
                 resultList.add(node);
+            }
+
         }
         if(sameExpressionCount!=0)
             resultList.addAll(createExpressionTreeList(sameExpressionCount));

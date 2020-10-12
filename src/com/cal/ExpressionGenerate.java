@@ -49,17 +49,9 @@ public class ExpressionGenerate
         String sign = getSign();
         String num1Str = getNaturalNum(maxNum);
         String num2Str = getNaturalNum(maxNum);
-        /**
-        int num1 = Integer.parseInt(num1Str);
-        int num2 = Integer.parseInt(num2Str);
-        if(sign.equals("-")&&num1<num2)
-            return getSign()+" ( "+num2Str +" "+ sign + " " +num1Str+" ) ";
-        if(sign.equals("÷")&&num1>num2)
-            return getSign()+" ( "+num2Str +" "+ sign + " " +num1Str+" ) ";
-         **/
         return getSign()+" ( "+num1Str +" "+ sign + " " +num2Str+" ) ";
     }
-    protected String createExpression(int signNum)
+    public String createExpression(int signNum)
     {
 
         StringBuilder result= new StringBuilder();

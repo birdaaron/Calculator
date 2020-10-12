@@ -1,3 +1,4 @@
+package com.cal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -53,7 +54,7 @@ public class Core
         }
         return false;
     }
-    protected String transTreeToString(Node root)
+    public String transTreeToString(Node root)
     {
         if(root==null)
             return "";

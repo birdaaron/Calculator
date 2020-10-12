@@ -1,11 +1,12 @@
+package com.cal;
 public class Node
 {
-    Node parent;
-    Node left;
-    Node right;
-    String content;
-    String result;
-    boolean isNum;
+    public Node parent;
+    public Node left;
+    public Node right;
+    public String content;
+    public String result;
+    public boolean isNum;
     public Node(Node parent,String content, String result, boolean isNum)
     {
         this.parent = parent;
